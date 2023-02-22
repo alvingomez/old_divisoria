@@ -1,0 +1,50 @@
+const data = {
+  products: [
+    {
+      name: 'pop mart Sweet Bean 24-Hour Convenience Store Series Prop 3PC Exclusive Action Figure Box Toy Bulk Box Popular Collectible Art Toy Cute Figure Creative Gift, for Christmas Birthday Party Holiday',
+      slug: 'pop mart Sweet Bean 24-Hour Convenience Store',
+      category: 'action figure',
+      image: '/images/popMart1.jpg',
+      price: 44.76,
+      countInStock: 10,
+      rating: 4.5,
+      numReviews: 10,
+      description: 'high quality toys',
+    },
+    {
+      name: 'pop mart H-P and The Chamber of Secrets Series 1PC Exclusive Action Figure Box Toy Bulk Box Popular Collectible Art Toy Cute Figure Creative Gift, for Christmas Birthday Party Holiday',
+      slug: 'pop mart H-P and The Chamber of Secrets Series',
+      category: 'action figure',
+      image: '/images/popMart2.jpg',
+      price: 12.9,
+      countInStock: 1,
+      rating: 4.5,
+      numReviews: 10,
+      description: 'high quality toys',
+    },
+
+    {
+      name: 'Rolife Blind Box-Fairies in The Forest-Cute Action Figure-Kawaii Figures Blind Bags',
+      slug: 'Rolife Blind Box-Fairies in The Forest',
+      category: 'doll',
+      image: '/images/popMart3',
+      price: 14.9,
+      countInStock: 5,
+      rating: 4.8,
+      numReviews: 25,
+      description: 'high quality dolls',
+    },
+    {
+      name: 'pop mart POP CAR Super Track Series 1PC Exclusive Action Figure Box Toy Bulk Box Popular Collectible Art Toy Cute Figure Creative Gift, for Christmas Birthday Party Holiday',
+      slug: 'pop mart POP CAR Super Track Series',
+      category: 'action figure',
+      image: '/images/popMart3',
+      price: 18.99,
+      countInStock: 14,
+      rating: 3.7,
+      numReviews: 5,
+      description: 'high quality action figure',
+    },
+  ],
+};
+export default data;

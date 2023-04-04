@@ -1,35 +1,23 @@
-import { useState } from 'react'
-import data from './data';
+import {BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+// import data from './data';
 
-function App() {  
-  const dataProducts = data.products.map((product) => {
-    const {name, slug, image, price} = product;
-    return(
-      <div className="product" key={slug}>
-        <a href={`/product/${slug}`}>
-          <img src={image} alt="" />
-        </a>
-        <div className="product-info">
-        <a href={`/product/${slug}`}>
-          <p>{name}</p>
-          <p>{price}</p>
-          <button>Add to cart</button>
-        </a>
-        </div>
-      </div>
-    )
-  })
+function App() {   
 
   return (
-  <div>
-  <header>
-    <a href="/">divisoria</a>
-  </header>
-  <main>   
-    <h1>Featured Products</h1>
-    <div className="products">{dataProducts}</div>
-  </main>
-  </div>
+    <BrowserRouter>
+    <div>
+      <header>
+        <Link to="/" >Divisoria</Link>
+      </header>
+      <main>
+        {/* DEFINING ROUTES */}
+        <Routes>
+          <Route path='/' element={<HomeScreen />} />
+        </Routes>
+      </main>
+    </div>
+  </BrowserRouter>
   )
 }
 

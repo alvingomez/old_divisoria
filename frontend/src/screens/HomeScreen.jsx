@@ -1,5 +1,5 @@
 import React from 'react';
-import data from '../data';
+// import data from '../../../data';
 
 const HomeScreen = () => {
   const dataProducts = data.products.map((product) => {

@@ -13,9 +13,9 @@ function App() {
       </header>
       <main>
         {/* DEFINING ROUTES */}
-        <Routes>
-          <Route path='/' element={<HomeScreen />} />
+        <Routes>          
           <Route path='/product/:slug' element={<ProductScreen/>} />
+          <Route path='/' element={<HomeScreen />} />
         </Routes>
       </main>
     </div>

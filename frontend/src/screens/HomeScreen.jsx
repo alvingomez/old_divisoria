@@ -12,8 +12,9 @@ const HomeScreen = () => {
     const fetchData = async () => {
       // Send an AJAX request
 
-      const response = await axios.get('api/products')
+      const result = await axios.get('api/products')
       
+      // CATCHING ERRORS FOR AXIOS
       .catch(function (error) {
         if (error.response) {
           // The request was made and the server responded with a status code
@@ -32,14 +33,14 @@ const HomeScreen = () => {
         }
         console.log(error.config);
       });
-      
-      setProducts(response.data);
+      console.log(products);
+      setProducts(result.data);
     }
     // invoke fucntion
     fetchData();
   }, []);
 
-  console.log(products) 
+  // console.log(products) 
 
   const dataProducts = products.map((product) => {
     const { name, slug, image, price } = product;

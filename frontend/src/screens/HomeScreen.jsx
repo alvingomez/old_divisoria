@@ -1,24 +1,65 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 // import data from '../../../data';
 
 const HomeScreen = () => {
-  const dataProducts = data.products.map((product) => {
+  //STATE
+  const [products, setProducts] = useState([]);
+
+  // FETCHING PRODUCTS FROM THE BACKEND
+  useEffect(() => {
+    const fetchData = async () => {
+      // Send an AJAX request
+
+      const result = await axios.get('api/products')
+      
+      // CATCHING ERRORS FOR AXIOS
+      .catch(function (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
+      });
+      console.log(products);
+      setProducts(result.data);
+    }
+    // invoke fucntion
+    fetchData();
+  }, []);
+
+  // console.log(products) 
+
+  const dataProducts = products.map((product) => {
     const { name, slug, image, price } = product;
     return (
       <div className="product" key={slug}>
-        <a href={`/product/${slug}`}>
+        <Link to={`/product/${slug}`}>
           <img src={image} alt="" />
-        </a>
+        </Link>
         <div className="product-info">
-          <a href={`/product/${slug}`}>
+          <Link to={`/product/${slug}`}>
             <p>{name}</p>
             <p>{price}</p>
             <button>Add to cart</button>
-          </a>
+          </Link>
         </div>
       </div>
     );
   });
+
   return (
     <div>
       <h1>Featured Products</h1>

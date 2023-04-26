@@ -1,19 +1,49 @@
-import {useState, useEffect} from 'react';
+import {useReducer, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-// import data from '../../../data';
+
+
+const reducer = (state,action) => {
+  if(action.type === 'FETCH_REQUEST'){
+    return {
+      ...state,
+      loading:true
+    }
+  }
+  else if(action.type === 'FETCH_SUCCESS'){
+    return{
+      ...state,
+      loading:false,
+      products:action.payload
+    }
+  }
+  else state;
+}
+
+
+const initialArg = { 
+  products:[],  
+  loading:false,
+  
+} 
+
 
 const HomeScreen = () => {
-  //STATE
-  const [products, setProducts] = useState([]);
+// REDUCER
+const [{products, loading}, dispatch] = useReducer(reducer, initialArg)
+  
 
   // FETCHING PRODUCTS FROM THE BACKEND
-  useEffect(() => {
+  useEffect(() => {    
+
     const fetchData = async () => {
       // Send an AJAX request
+      dispatch({
+        type:'FETCH_REQUEST'
+      });
 
       const result = await axios.get('api/products')
-      
+        
       // CATCHING ERRORS FOR AXIOS
       .catch(function (error) {
         if (error.response) {
@@ -33,14 +63,17 @@ const HomeScreen = () => {
         }
         console.log(error.config);
       });
-      console.log(products);
-      setProducts(result.data);
+
+      dispatch({
+        type:'FETCH_SUCCESS',
+        payload:result.data
+      });      
+      
     }
     // invoke fucntion
     fetchData();
   }, []);
-
-  // console.log(products) 
+ 
 
   const dataProducts = products.map((product) => {
     const { name, slug, image, price } = product;
@@ -69,3 +102,5 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+// variable names FETCH_REQUEST, FETCH_SUCCESS, 'FETCH_FAIL',

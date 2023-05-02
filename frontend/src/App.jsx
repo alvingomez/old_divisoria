@@ -11,7 +11,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div>
+    <div className='d-flex flex-column site-container' >
       <header>
         {/* Using React Bootstrap component to create navbar in the header */}
         <Navbar>
@@ -23,19 +23,24 @@ function App() {
               <LinkContainer to="/" >
                 <Navbar.Brand>Amazon</Navbar.Brand>
               </LinkContainer>
-          </Container>
-
-
-        </Navbar>
+          </Container>          
+        </Navbar>        
         <Link to="/" >Divisoria</Link>
       </header>
-      <main>
+      <main>   
+
         {/* DEFINING ROUTES */}
         <Routes>          
           <Route path='/product/:slug' element={<ProductScreen/>} />
           <Route path='/' element={<HomeScreen />} />
         </Routes>
+
       </main>
+
+      <footer>
+          <div className="text-center">All rights reserved</div>
+      </footer>
+
     </div>
   </BrowserRouter>
   )

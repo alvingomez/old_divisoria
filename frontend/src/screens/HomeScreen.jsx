@@ -2,6 +2,9 @@ import {useReducer, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Product from '../components/Product';
 
 const reducer = (state,action) => {
   if(action.type === 'FETCH_REQUEST'){

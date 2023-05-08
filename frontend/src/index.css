@@ -32,6 +32,7 @@ header a{
 } */
 
 /* flex-grow:1 flex-shrink:0, flex-basis:0  */
+/* Set to 1 to occupy the whole screen */
 main{
   flex:1;
 }
